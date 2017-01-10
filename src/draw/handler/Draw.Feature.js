@@ -13,7 +13,7 @@ L.Draw.Feature = L.Handler.extend({
 		this._container = map._container;
 		this._overlayPane = map._panes.overlayPane;
 		this._popupPane = map._panes.popupPane;
-
+		this.dbid = -1;
 		// Merge default shapeOptions options with custom shapeOptions
 		if (options && options.shapeOptions) {
 			options.shapeOptions = L.Util.extend({}, this.options.shapeOptions, options.shapeOptions);
@@ -81,6 +81,16 @@ L.Draw.Feature = L.Handler.extend({
 	// Sets new options to this handler
 	setOptions: function (options) {
 		L.setOptions(this, options);
+	},
+
+	//@method setDBId(dbid): void
+	//设置图元的后台数据库ID
+	setDBId: function(dbid) {
+		this.dbid = dbid;
+	},
+	//@method getDBId(): int
+	getDBId: function() {
+		return this.dbid;
 	},
 
 	_fireCreatedEvent: function (layer) {
